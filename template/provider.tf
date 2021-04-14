@@ -6,6 +6,9 @@ terraform {
     }
   }
   backend "s3" {
+    region = "us-eeast-1"
+    key = "gl-tf-demo.dev.state"
+    bucket = "gl-demo-tfstate"
   }
 }
 provider "aws" {
