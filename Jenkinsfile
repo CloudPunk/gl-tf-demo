@@ -23,14 +23,14 @@ pipeline {
         }*/
         stage('Terraform Init') {
             steps {
-                dir('gl-tf-demo/template') {
+                dir('template') {
                     sh 'terraform init -input=false '
                 }
             }
         }
         stage('Terraform Plan') {
             steps {
-                dir('gl-tf-demo/template') {
+                dir('template') {
                     sh "terraform plan -out=tfplan -input=false -var-file='../dev/terraform.tfvars'"
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                dir('gl-tf-demo/template') {
+                dir('template') {
                     sh 'terraform apply -input=false tfplan'
                 }
             }
