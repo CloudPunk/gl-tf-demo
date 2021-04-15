@@ -20,7 +20,7 @@ pipeline
                             sh './intercept system --setup --update'
                             sh './intercept config -r'
                             sh './intercept config -a https://raw.githubusercontent.com/arkaprava-jana/gl-tf-demo-policy/main/policyv1.yaml'
-                            sh './intercept config -a ../gl-tf-demo/exceptions.yaml'
+                            sh './intercept config -a https://raw.githubusercontent.com/arkaprava-jana/gl-tf-demo-policy/main/exceptions.yaml'
                             sh './intercept audit -t ../gl-tf-demo'
                         }
                 }
