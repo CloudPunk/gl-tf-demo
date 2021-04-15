@@ -18,6 +18,7 @@ pipeline
                     sh 'chmod +x ../tools/intercept'
                         dir('../tools') {
                             sh './intercept system --setup --update'
+                            sh './intercept config -r'
                             sh './intercept config -a https://raw.githubusercontent.com/arkaprava-jana/gl-tf-demo-policy/main/policyv1.yaml'
                             sh './intercept audit -t ../gl-tf-demo'
                         }
