@@ -21,10 +21,12 @@ pipeline {
                 sh './intercept audit -t gl-tf-demo/'
             }
         }*/
-        
+
         stage('Terraform Init') {
             steps {
                 sh 'ls ..'
+                sh 'pwd'
+                sh 'ls ../gl-tf-demo'
                 dir('template') {
                     sh 'terraform init -input=false '
                 }
