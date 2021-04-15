@@ -6,13 +6,12 @@ pipeline
         password (name: 'AWS_ACCESS_KEY_ID')
         password (name: 'AWS_SECRET_ACCESS_KEY')
     }
-    environment 
+    environment {
         TF_IN_AUTOMATION = 'true'
         AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-        /* groovylint-disable-next-line DuplicateNumberLiteral */
-        REPO_NAME = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/')[3].split("\\.")[0]
-    
+        REPO_NAME = ${REPO_NAME}.tokenize('/')[3].split("\\.")[0]
+    }
     stages {
         stage('Terraform Audit') {
             steps {
