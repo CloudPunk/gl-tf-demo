@@ -1,6 +1,7 @@
 /* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
 
 pipeline
+{
     agent any
     parameters {
         password (name: 'AWS_ACCESS_KEY_ID')
@@ -62,3 +63,4 @@ pipeline
             }
         }
     }
+}
