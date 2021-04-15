@@ -23,6 +23,7 @@ pipeline {
         }*/
         stage('Terraform Init') {
             steps {
+                sh 'ls ..'
                 dir('template') {
                     sh 'terraform init -input=false '
                 }
