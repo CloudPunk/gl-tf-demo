@@ -13,13 +13,14 @@ pipeline {
     stages {
         stage('Terraform Audit') {
             steps {
+                sh 'env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')'
                 sh 'mkdir ../tools'
                 sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
                 sh 'chmod +x ../tools/intercept'
                 dir('../tools') {
                     sh './intercept system --setup --update'
                     sh './intercept config -a https://gl-demo-binary.s3.amazonaws.com/policyv1.yaml'
-                    sh './intercept audit -t ../gl-tf-demo/'
+                    sh './intercept audit -t ../$GIT_REPO_NAME'
                 }
             }
         }
