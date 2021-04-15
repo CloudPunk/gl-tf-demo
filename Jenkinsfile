@@ -11,8 +11,8 @@ pipeline
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
     }
     stages {
-        stage('Terraform Audit') {
         /*
+        stage('Terraform Audit') {
             steps {
                 ansiColor('xterm') {
                     sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
@@ -21,12 +21,14 @@ pipeline
                             sh './intercept system --setup --update'
                             sh './intercept config -r'
                             sh './intercept config -a https://raw.githubusercontent.com/arkaprava-jana/gl-tf-demo-policy/main/policyv1.yaml'
+                            sh './intercept config -a https://raw.githubusercontent.com/arkaprava-jana/gl-tf-demo-policy/main/exceptions.yaml'
                             sh './intercept audit -t ../gl-tf-demo'
                         }
                 }
             }
         }
         */
+
         stage('Terraform Init') {
             steps {
                 dir('template') {
