@@ -13,6 +13,7 @@ pipeline
     stages {
         stage('Terraform Audit') {
             steps {
+                deleteDir('../tools')
                 sh 'mkdir ../tools'
                 sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
                 sh 'chmod +x ../tools/intercept'
