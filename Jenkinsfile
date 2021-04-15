@@ -11,13 +11,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
     }
     stages {
-        stage('Get Code') {
-            steps {
-                deleteDir()
-                // Get some code from a GitHub repository
-                sh 'ls'
-            }
-        }
         /*
         stage('Terraform Audit') {
             steps {
