@@ -1,5 +1,3 @@
-/* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
-
 pipeline
 {
     agent any
@@ -11,19 +9,17 @@ pipeline
         TF_IN_AUTOMATION = 'true'
         AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-        REPO_NAME = ${REPO_NAME}.tokenize('/')[3].split("\\.")[0]
     }
     stages {
         stage('Terraform Audit') {
             steps {
-                sh "echo ${REPO_NAME}"
                 sh 'mkdir ../tools'
                 sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
                 sh 'chmod +x ../tools/intercept'
                 dir('../tools') {
                     sh './intercept system --setup --update'
                     sh './intercept config -a https://gl-demo-binary.s3.amazonaws.com/policyv1.yaml'
-                    sh "./intercept audit -t ../p"
+                    sh './intercept audit -t ../gl-tf-demo'
                 }
             }
         }
