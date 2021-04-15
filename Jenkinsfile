@@ -1,19 +1,21 @@
 /* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
-pipeline {
+
+pipeline
     agent any
     parameters {
         password (name: 'AWS_ACCESS_KEY_ID')
         password (name: 'AWS_SECRET_ACCESS_KEY')
     }
-    environment {
+    environment 
         TF_IN_AUTOMATION = 'true'
         AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-    }
+        REPO_NAME = echo ${git_url} | sed -nr  's/^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$$/\4\/\3/p'`
+    
     stages {
         stage('Terraform Audit') {
             steps {
-                sh "echo ${GIT_URL}"
+                sh "echo ${REPO_NAME}"
                 sh 'mkdir ../tools'
                 sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
                 sh 'chmod +x ../tools/intercept'
@@ -60,4 +62,3 @@ pipeline {
             }
         }
     }
-}
