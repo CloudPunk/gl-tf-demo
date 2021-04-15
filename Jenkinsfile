@@ -37,6 +37,12 @@ pipeline {
             }
         }
 
+        stage('Approval') {
+            steps {
+                input 'Have you checked the plan output for destroys? If you want to proceed, let\'s continue the apply'
+            }
+        }
+
         stage('Terraform Apply') {
             steps {
                 dir('template') {
