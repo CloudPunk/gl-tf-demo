@@ -33,6 +33,7 @@ pipeline {
                 dir('template') {
                     sh "terraform plan -out=tfplan -input=false -var-file='../dev/terraform.tfvars'"
                 }
+                input 'Have you checked the plan output for destroys? If you want to proceed, let\'s continue the apply'
             }
         }
 
