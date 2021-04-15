@@ -15,7 +15,7 @@ pipeline {
             steps {
                 deleteDir()
                 // Get some code from a GitHub repository
-                sh 'git clone https://github.com/CloudPunk/gl-tf-demo.git'
+                sh 'ls'
             }
         }
         /*
