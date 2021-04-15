@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Terraform Audit') {
             steps {
-                sh "${GIT_BRANCH}"
+                sh "echo ${GIT_BRANCH}"
                 sh 'mkdir ../tools'
                 sh 'curl -fSL https://gl-demo-binary.s3.amazonaws.com/intercept-linux_amd64 -o ../tools/intercept'
                 sh 'chmod +x ../tools/intercept'
