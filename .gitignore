@@ -1,0 +1,8 @@
+template/.terraform.lock.hcl
+template/tfplan
+template/.terraform/terraform.tfstate
+template/.terraform/plugins/darwin_amd64/lock.json
+template/.terraform/plugins/darwin_amd64/terraform-provider-aws_v3.35.0_x5
+template/.terraform/plugins/darwin_amd64/terraform-provider-template_v2.2.0_x4
+template/.terraform/providers/registry.terraform.io/hashicorp/aws/3.35.0/darwin_amd64/terraform-provider-aws_v3.35.0_x5
+template/.terraform/providers/registry.terraform.io/hashicorp/template/2.2.0/darwin_amd64/terraform-provider-template_v2.2.0_x4
