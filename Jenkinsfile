@@ -11,6 +11,7 @@ pipeline
         AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
     }
     stages {
+        /*
         stage('Terraform Audit') {
             steps {
                 ansiColor('xterm') {
@@ -26,7 +27,7 @@ pipeline
                 }
             }
         }
-
+        */
         stage('Terraform Init') {
             steps {
                 dir('template') {
