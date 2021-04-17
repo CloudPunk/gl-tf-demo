@@ -4,6 +4,6 @@ resource "aws_instance" "example" {
   user_data = data.template_file.bootstrap.rendered
 
   tags = {
-    Name = "ExampleInstance"
+    Name = var.project
   }
 }
